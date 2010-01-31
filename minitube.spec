@@ -1,13 +1,13 @@
 %define name    minitube
 %define version 0.9
-%define release %mkrel 1
+%define release %mkrel 2
 
 Name: 		%{name}
 Version: 	%{version}
 Release: 	%{release}
 Summary:        A native YouTube client
 Group:          Video
-License:        GPLv2
+License:        GPLv2+
 URL:            http://flavio.tordini.org/minitube
 Source:         %{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}
@@ -30,6 +30,7 @@ qmake PREFIX=%{buildroot}%{_prefix}
 make
 
 %install
+rm -rf $RPM_BUILD_ROOT
 make install
 
 %clean
