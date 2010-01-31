@@ -5,7 +5,7 @@
 Name: 		%{name}
 Version: 	%{version}
 Release: 	%{release}
-Summary:        A native YouTube client.
+Summary:        A native YouTube client
 Group:          Video
 License:        GPLv2
 URL:            http://flavio.tordini.org/minitube
