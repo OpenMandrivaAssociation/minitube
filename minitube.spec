@@ -1,10 +1,6 @@
-%define name    minitube
-%define version 1.1
-%define release %mkrel 1
-
-Name: 		%{name}
-Version: 	%{version}
-Release: 	%{release}
+Name: 		minitube
+Version: 	1.2
+Release: 	%mkrel 1
 Summary:        A native YouTube client
 Group:          Video
 License:        GPLv2+
