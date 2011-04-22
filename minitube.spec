@@ -1,12 +1,11 @@
 Name: 		minitube
-Version: 	1.3
+Version: 	1.4.2
 Release: 	%mkrel 1
 Summary:        A native YouTube client
 Group:          Video
 License:        GPLv2+
 URL:            http://flavio.tordini.org/minitube
-Source:         %{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}
+Source:         http://flavio.tordini.org/files/minitube/%{name}-%{version}.tar.gz
 BuildRequires:  qt4-devel
 BuildRequires:  phonon-devel
 
@@ -27,13 +26,14 @@ to create a new TV-like experience.
 
 %install
 rm -rf %{buildroot}
-make install INSTALL_ROOT=%{buildroot}
+%makeinstall_std INSTALL_ROOT=%{buildroot}
 
 %clean
 rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
+%doc TODO CHANGES AUTHORS
 %{_bindir}/minitube
 %{_datadir}/applications/minitube.desktop
 %{_datadir}/icons/hicolor/*/apps/minitube.*
