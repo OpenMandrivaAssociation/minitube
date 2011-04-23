@@ -1,6 +1,6 @@
 Name: 		minitube
 Version: 	1.4.2
-Release: 	%mkrel 1
+Release: 	%mkrel 2
 Summary:        A native YouTube client
 Group:          Video
 License:        GPLv2+
@@ -8,6 +8,7 @@ URL:            http://flavio.tordini.org/minitube
 Source:         http://flavio.tordini.org/files/minitube/%{name}-%{version}.tar.gz
 BuildRequires:  qt4-devel
 BuildRequires:  phonon-devel
+Requires:	phonon-backend
 
 %description
 Minitube is a native YouTube client. With it you can watch YouTube videos in
