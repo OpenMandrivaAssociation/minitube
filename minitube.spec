@@ -1,14 +1,16 @@
 Name: 		minitube
-Version: 	1.5
-Release: 	%mkrel 1
-Summary:        A native YouTube client
-Group:          Video
-License:        GPLv2+
-URL:            http://flavio.tordini.org/minitube
-Source:         http://flavio.tordini.org/files/minitube/%{name}-%{version}.tar.gz
-BuildRequires:  qt4-devel
-BuildRequires:  phonon-devel
+Version:	1.6
+Release:	%mkrel 1
+Summary:	A native YouTube client
+Group:		Video
+License:	GPLv2+
+URL:		http://flavio.tordini.org/minitube
+Source:		http://flavio.tordini.org/files/minitube/%{name}-%{version}.tar.gz
+BuildRequires:	qt4-devel
+BuildRequires:	phonon-devel
 Requires:	phonon-backend
+Requires:	gstreamer0.10-ffmpeg
+Suggests:	gstreamer0.10-faad
 
 %description
 Minitube is a native YouTube client. With it you can watch YouTube videos in
@@ -18,6 +20,12 @@ Minitube does not require the Flash Player.
 Minitube is not about cloning the original Youtube web interface, it strives
 to create a new TV-like experience.
 
+If you have problems with video playback, try to switch to vlc Phonon backend
+in KDE4 settings.
+
+If you use GStreamer Phonon backend, it's recommended to install package
+gstreamer0.10-faad from PLF or Restricted (ex-PLF) repository.
+
 %prep
 %setup -q -n minitube
 
@@ -26,11 +34,11 @@ to create a new TV-like experience.
 %make
 
 %install
-rm -rf %{buildroot}
+%__rm -rf %{buildroot}
 %makeinstall_std INSTALL_ROOT=%{buildroot}
 
 %clean
-rm -rf %{buildroot}
+%__rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
