@@ -1,5 +1,5 @@
 Name: 		minitube
-Version:	1.6
+Version:	1.7
 Release:	%mkrel 1
 Summary:	A native YouTube client
 Group:		Video
