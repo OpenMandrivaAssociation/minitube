@@ -1,5 +1,5 @@
 Name: 		minitube
-Version:	1.7
+Version:	1.7.1
 Release:	%mkrel 1
 Summary:	A native YouTube client
 Group:		Video
@@ -41,7 +41,6 @@ gstreamer0.10-faad from PLF or Restricted (ex-PLF) repository.
 %__rm -rf %{buildroot}
 
 %files
-%defattr(-,root,root,-)
 %doc TODO CHANGES AUTHORS
 %{_bindir}/minitube
 %{_datadir}/applications/minitube.desktop
