@@ -1,5 +1,5 @@
-Name: 		minitube
-Version:	1.7.1
+Name:		minitube
+Version:	1.8
 Release:	%mkrel 1
 Summary:	A native YouTube client
 Group:		Video
@@ -26,6 +26,7 @@ in KDE4 settings.
 If you use GStreamer Phonon backend, it's recommended to install package
 gstreamer0.10-faad from PLF or Restricted (ex-PLF) repository.
 
+
 %prep
 %setup -q -n minitube
 
@@ -42,8 +43,8 @@ gstreamer0.10-faad from PLF or Restricted (ex-PLF) repository.
 
 %files
 %doc TODO CHANGES AUTHORS
-%{_bindir}/minitube
-%{_datadir}/applications/minitube.desktop
-%{_datadir}/icons/hicolor/*/apps/minitube.*
-%{_datadir}/minitube
+%{_bindir}/%{name}
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/icons/hicolor/*/apps/%{name}.*
+%{_datadir}/%{name}
 
