@@ -6,6 +6,7 @@ Group:		Video
 License:	GPLv2+
 URL:		http://flavio.tordini.org/minitube
 Source:		http://flavio.tordini.org/files/minitube/%{name}-%{version}.tar.gz
+Patch0:		minitube-1.8-mga-missing-include.patch
 BuildRequires:	qt4-devel
 BuildRequires:	phonon-devel
 Requires:	phonon-backend
@@ -29,6 +30,7 @@ gstreamer0.10-faad from PLF or Restricted (ex-PLF) repository.
 
 %prep
 %setup -q -n minitube
+%patch0 -p1 -b .include~
 
 %build
 %qmake_qt4 PREFIX=%{_prefix}
