@@ -1,5 +1,5 @@
 Name:		minitube
-Version:	1.8
+Version:	1.9
 Release:	%mkrel 1
 Summary:	A native YouTube client
 Group:		Video
