@@ -1,0 +1,11 @@
+diff -p -up ./src/qtsingleapplication/qtlocalpeer.cpp.orig ./src/qtsingleapplication/qtlocalpeer.cpp
+--- ./src/qtsingleapplication/qtlocalpeer.cpp.orig	2012-07-02 15:32:54.334195377 +0000
++++ ./src/qtsingleapplication/qtlocalpeer.cpp	2012-07-02 15:33:18.417165370 +0000
+@@ -45,6 +45,7 @@
+ ****************************************************************************/
+ 
+ 
++#include <unistd.h>
+ #include "qtlocalpeer.h"
+ #include <QtCore/QCoreApplication>
+ #include <QtCore/QTime>
