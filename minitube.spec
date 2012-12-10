@@ -5,13 +5,13 @@ Summary:	A native YouTube client
 Group:		Video
 License:	GPLv2+
 URL:		http://flavio.tordini.org/minitube
-Source:		http://flavio.tordini.org/files/minitube/%{name}-%{version}.tar.gz
-Patch0:		minitube-1.8-mga-missing-include.patch
+Source0:	http://flavio.tordini.org/files/minitube/%{name}-%{version}.tar.gz
 BuildRequires:	qt4-devel
 BuildRequires:	phonon-devel
 Requires:	phonon-backend
 Requires:	gstreamer0.10-ffmpeg
 Suggests:	gstreamer0.10-faad
+Patch0:		minitube-1.9-gcc47.patch
 
 %description
 Minitube is a native YouTube client. With it you can watch YouTube videos in
@@ -30,18 +30,14 @@ gstreamer0.10-faad from PLF or Restricted (ex-PLF) repository.
 
 %prep
 %setup -q -n minitube
-%patch0 -p1 -b .include~
+%patch0 -p1
 
 %build
 %qmake_qt4 PREFIX=%{_prefix}
 %make
 
 %install
-%__rm -rf %{buildroot}
 %makeinstall_std INSTALL_ROOT=%{buildroot}
-
-%clean
-%__rm -rf %{buildroot}
 
 %files
 %doc TODO CHANGES AUTHORS
@@ -49,4 +45,3 @@ gstreamer0.10-faad from PLF or Restricted (ex-PLF) repository.
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
 %{_datadir}/%{name}
-
