@@ -28,7 +28,7 @@ gstreamer0.10-faad from PLF or Restricted (ex-PLF) repository.
 
 
 %prep
-%setup -q -n minitube
+%setup -q -n %{name}-%{version}
 
 %build
 %qmake_qt4 PREFIX=%{_prefix}
