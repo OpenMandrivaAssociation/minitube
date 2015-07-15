@@ -5,7 +5,7 @@ Summary:	A native YouTube client
 Group:		Video
 License:	GPLv2+
 URL:		http://flavio.tordini.org/minitube
-Source0:	https://github.com/flaviotordini/minitube/archive/%{version}.tar.gz
+Source0:	https://github.com/flaviotordini/minitube/archive/%{name}-%{version}.tar.gz
 BuildRequires:	qt4-devel
 BuildRequires:	phonon-devel
 Requires:	phonon-backend
