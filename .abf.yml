@@ -1,2 +1,5 @@
 sources:
   minitube-3.0.tar.gz: 5236104c101a22a11a3ab1282d5a241faab7ad4d
+  http-master.tar.gz: 9be30dff15bf8e5eb2d2b3fbd732395b4ff91452
+  idle-master.tar.gz: dac8abefecbe9cab61a15584b450861aa3cdf6b9
+  media-master.tar.gz: c7e20a4686ebfc9dc8b6c3f3df828e50c0443f2a
