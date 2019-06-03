@@ -1,16 +1,25 @@
 Name:		minitube
-Version:	2.4
+Version:	3.0
 Release:	1
 Summary:	A native YouTube client
 Group:		Video
-License:	GPLv2+
+License:	GPLv3+
 URL:		http://flavio.tordini.org/minitube
 Source0:	https://github.com/flaviotordini/minitube/archive/%{name}-%{version}.tar.gz
-BuildRequires:	qt4-devel
-BuildRequires:	phonon-devel
-Requires:	phonon-backend
-Requires:	gstreamer0.10-ffmpeg
-Suggests:	gstreamer0.10-faad
+
+BuildRequires:	pkgconfig(Qt5Core)
+BuildRequires:	pkgconfig(Qt5Network)
+BuildRequires:	pkgconfig(Qt5Widgets)
+BuildRequires:	pkgconfig(Qt5Sql)
+BuildRequires:	pkgconfig(Qt5Qml)
+BuildRequires:	pkgconfig(Qt5X11Extras)
+BuildRequires:	pkgconfig(phonon4qt5)
+BuildRequires:	qttools5
+BuildRequires:	pkgconfig(libvlc)
+BuildRequires:	pkgconfig(mpv)
+
+Requires:	phonon4qt5-vlc
+Requires: vlc-plugin-gnutls
 
 %description
 Minitube is a native YouTube client. With it you can watch YouTube videos in
@@ -31,11 +40,12 @@ gstreamer0.10-faad from PLF or Restricted (ex-PLF) repository.
 %setup -q -n %{name}-%{version}
 
 %build
-%qmake_qt4 PREFIX=%{_prefix}
-%make
+%qmake_qt5 \
+	PREFIX=%{_prefix}
+%make_build
 
 %install
-%makeinstall_std INSTALL_ROOT=%{buildroot}
+%make_install INSTALL_ROOT=%{buildroot}
 
 %files
 %doc TODO CHANGES AUTHORS
