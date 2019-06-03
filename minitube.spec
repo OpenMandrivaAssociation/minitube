@@ -44,8 +44,20 @@ If you use GStreamer Phonon backend, it's recommended to install package
 gstreamer0.10-faad from PLF or Restricted (ex-PLF) repository.
 
 
-%prep
-%setup -q -n %{name}-%{version}
+%autosetup -p1
+
+pushd lib
+rm -rf *
+tar xfz %{S:1}
+tar xfz %{S:2}
+tar xfz %{S:3}
+mv http-master http
+mv idle-master idle
+mv media-master media
+popd
+
+#more debug msgs
+sed -i -e '/QT_NO_DEBUG_OUTPUT/d' minitube.pro
 
 %build
 %qmake_qt5 \
