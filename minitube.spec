@@ -7,9 +7,12 @@ License:	GPLv3+
 URL:		http://flavio.tordini.org/minitube
 Source0:	https://github.com/flaviotordini/minitube/archive/%{name}-%{version}.tar.gz
 
-Source1:	https://github.com/flaviotordini/media/archive/master/media-git157456a.tar.gz
-Source2:	https://github.com/flaviotordini/http/archive/master/http-gite790e31.tar.gz
-Source3:	https://github.com/flaviotordini/idle/archive/master/idle-git6aa092d.tar.gz
+#Source1:	https://github.com/flaviotordini/media/archive/master/media-git157456a.tar.gz
+Source1:	http-master.tar.gz
+#Source2:	https://github.com/flaviotordini/http/archive/master/http-gite790e31.tar.gz
+Source2:	idle-master.tar.gz
+#Source3:	https://github.com/flaviotordini/idle/archive/master/idle-git6aa092d.tar.gz
+Source3:	media-master.tar.gz
 
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Network)
