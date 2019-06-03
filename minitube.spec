@@ -14,7 +14,8 @@ BuildRequires:	pkgconfig(Qt5Sql)
 BuildRequires:	pkgconfig(Qt5Qml)
 BuildRequires:	pkgconfig(Qt5X11Extras)
 BuildRequires:	pkgconfig(phonon4qt5)
-BuildRequires:	qttools5
+BuildRequires:	qt5-qttools
+BuildRequires:	qmake5
 BuildRequires:	pkgconfig(libvlc)
 BuildRequires:	pkgconfig(mpv)
 
