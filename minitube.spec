@@ -23,6 +23,7 @@ BuildRequires:	qt5-qttools
 BuildRequires:	pkgconfig(libvlc)
 BuildRequires:	pkgconfig(mpv)
 BuildRequires:	qtsingleapplication-qt5-devel
+BuildRequires:	qt5-linguist-tools
 # minitube no longer supports anything other than the vlc phonon.
 Requires:	phonon4qt5-vlc
 Requires:	vlc-plugin-gnutls
