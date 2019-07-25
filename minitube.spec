@@ -1,19 +1,17 @@
+# Set up Google API keys, see http://www.chromium.org/developers/how-tos/api-keys
+# Note: these are for OpenMandriva use ONLY.
+# For your own builds, please get your own set of keys.
+%define    google_api_key AIzaSyAraWnKIFrlXznuwvd3gI-gqTozL-H-8MU
+
 Name:		minitube
-Version:	3.0
-Release:	1
+Version:	3.1
+Release:	%mkrel 1
 Summary:	A native YouTube client
-Group:		Video
+Group:		Video/Players
 License:	GPLv3+
 URL:		http://flavio.tordini.org/minitube
-Source0:	https://github.com/flaviotordini/minitube/archive/%{name}-%{version}.tar.gz
-
-#Source1:	https://github.com/flaviotordini/media/archive/master/media-git157456a.tar.gz
-Source1:	http-master.tar.gz
-#Source2:	https://github.com/flaviotordini/http/archive/master/http-gite790e31.tar.gz
-Source2:	idle-master.tar.gz
-#Source3:	https://github.com/flaviotordini/idle/archive/master/idle-git6aa092d.tar.gz
-Source3:	media-master.tar.gz
-
+Source0:	https://github.com/flaviotordini/minitube/releases/download/%{version}/%{name}-%{version}.tar.bz2
+Patch0:		minitube-use-system-qtsingleapplication.patch
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Network)
 BuildRequires:	pkgconfig(Qt5Widgets)
@@ -22,12 +20,13 @@ BuildRequires:	pkgconfig(Qt5Qml)
 BuildRequires:	pkgconfig(Qt5X11Extras)
 BuildRequires:	pkgconfig(phonon4qt5)
 BuildRequires:	qt5-qttools
-BuildRequires:	qmake5
 BuildRequires:	pkgconfig(libvlc)
 BuildRequires:	pkgconfig(mpv)
-
+BuildRequires:	qtsingleapplication-qt5-devel
+# minitube no longer supports anything other than the vlc phonon.
 Requires:	phonon4qt5-vlc
-Requires: vlc-plugin-gnutls
+Requires:	vlc-plugin-gnutls
+Requires:	qt5-database-plugin-sqlite
 
 %description
 Minitube is a native YouTube client. With it you can watch YouTube videos in
@@ -37,39 +36,33 @@ Minitube does not require the Flash Player.
 Minitube is not about cloning the original Youtube web interface, it strives
 to create a new TV-like experience.
 
-If you have problems with video playback, try to switch to vlc Phonon backend
-in KDE4 settings.
-
-If you use GStreamer Phonon backend, it's recommended to install package
-gstreamer0.10-faad from PLF or Restricted (ex-PLF) repository.
-
-
+%prep
 %autosetup -p1
 
-pushd lib
-rm -rf *
-tar xfz %{S:1}
-tar xfz %{S:2}
-tar xfz %{S:3}
-mv http-master http
-mv idle-master idle
-mv media-master media
-popd
-
-#more debug msgs
+# more debug msgs
 sed -i -e '/QT_NO_DEBUG_OUTPUT/d' minitube.pro
+
+# remove bundled qtsingleapplication
+rm -r src/qtsingleapplication
 
 %build
 %qmake_qt5 \
-	PREFIX=%{_prefix}
+	PREFIX=%{_prefix} \
+	USE_SYSTEM_QTSINGLEAPPLICATION=1 \
+	DEFINES+=APP_GOOGLE_API_KEY=%{google_api_key}
 %make_build
 
 %install
 %make_install INSTALL_ROOT=%{buildroot}
 
+# fix .desktop file
+desktop-file-edit \
+	%{buildroot}%{_datadir}/applications/%{name}.desktop
+
 %files
 %doc TODO CHANGES AUTHORS
-%{_bindir}/%{name}
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/*/apps/%{name}.*
-%{_datadir}/%{name}
+%{_bindir}/minitube
+%{_datadir}/minitube/
+%{_datadir}/appdata/minitube.appdata.xml
+%{_datadir}/applications/minitube.desktop
+%{_iconsdir}/hicolor/*/apps/minitube.*

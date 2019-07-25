@@ -1,0 +1,15 @@
+diff -Nrup a/minitube.pro b/minitube.pro
+--- a/minitube.pro	2019-06-14 17:51:20.000000000 +0200
++++ b/minitube.pro	2019-06-15 08:12:01.932623278 +0200
+@@ -33,7 +33,11 @@ include(lib/idle/idle.pri)
+ DEFINES += MEDIA_MPV
+ include(lib/media/media.pri)
+ 
++isEmpty(USE_SYSTEM_QTSINGLEAPPLICATION){
+ include(src/qtsingleapplication/qtsingleapplication.pri)
++} else {
++  CONFIG += qtsingleapplication
++}
+ 
+ HEADERS += src/video.h \
+     src/spacer.h \
