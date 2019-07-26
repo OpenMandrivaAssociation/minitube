@@ -1,7 +1,7 @@
 # Set up Google API keys, see http://www.chromium.org/developers/how-tos/api-keys
 # Note: these are for OpenMandriva use ONLY.
 # For your own builds, please get your own set of keys.
-%define    google_api_key AIzaSyAraWnKIFrlXznuwvd3gI-gqTozL-H-8MU
+%define    google_api_key AIzaSyDlD0VWLAKJn_2zjq4X70wDy8Ra7YIIuoM
 
 Name:		minitube
 Version:	3.1
