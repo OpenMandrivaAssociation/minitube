@@ -1,7 +1,7 @@
-diff -Nrup a/minitube.pro b/minitube.pro
---- a/minitube.pro	2019-06-14 17:51:20.000000000 +0200
-+++ b/minitube.pro	2019-06-15 08:12:01.932623278 +0200
-@@ -33,7 +33,11 @@ include(lib/idle/idle.pri)
+diff -uraN minitube-3.4/minitube.pro omv-minitube-3.4/minitube.pro
+--- minitube-3.4/minitube.pro	2020-05-30 17:30:47.000000000 +0200
++++ omv-minitube-3.4/minitube.pro	2020-05-31 17:52:35.942077934 +0200
+@@ -37,7 +37,11 @@
  DEFINES += MEDIA_MPV
  include(lib/media/media.pri)
  
@@ -12,4 +12,4 @@ diff -Nrup a/minitube.pro b/minitube.pro
 +}
  
  HEADERS += src/video.h \
-     src/spacer.h \
+     src/messagebar.h \
