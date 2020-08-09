@@ -12,6 +12,9 @@ License:	GPLv3+
 URL:		http://flavio.tordini.org/minitube
 Source0:	https://github.com/flaviotordini/minitube/releases/download/%{version}/%{name}-%{version}.tar.bz2
 Patch0:		minitube-use-system-qtsingleapplication.patch
+# Upstream patches
+Patch101:	https://github.com/flaviotordini/minitube/commit/db4cfe85a12133b55a33b914f29881ca48b83c8c.patch
+Patch102:	https://github.com/flaviotordini/minitube/commit/2cd1d48d5d4505dd785adee7963ac01e5850d8ce.patch
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Network)
 BuildRequires:	pkgconfig(Qt5Widgets)
