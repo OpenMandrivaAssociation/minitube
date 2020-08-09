@@ -1,3 +1,5 @@
+%global debug_package %{nil}
+
 # Set up Google API keys, see http://www.chromium.org/developers/how-tos/api-keys
 # Note: these are for OpenMandriva use ONLY.
 # For your own builds, please get your own set of keys.
