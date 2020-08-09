@@ -22,6 +22,7 @@ BuildRequires:	pkgconfig(phonon4qt5)
 BuildRequires:	qt5-qttools
 BuildRequires:	pkgconfig(libvlc)
 BuildRequires:	pkgconfig(mpv)
+BuildRequires:  pkgconfig(tgvoip)
 BuildRequires:	qtsingleapplication-qt5-devel
 BuildRequires:	qt5-linguist-tools
 # minitube no longer supports anything other than the vlc phonon.
