@@ -68,6 +68,6 @@ desktop-file-edit \
 %doc TODO CHANGES AUTHORS
 %{_bindir}/minitube
 %{_datadir}/minitube/
-%{_datadir}/appdata/minitube.appdata.xml
+%{_datadir}/org.tordini.flavio.minitube.metainfo.xml
 %{_datadir}/applications/minitube.desktop
 %{_iconsdir}/hicolor/*/apps/minitube.*
