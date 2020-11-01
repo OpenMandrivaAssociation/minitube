@@ -6,7 +6,7 @@
 %define    google_api_key AIzaSyDlD0VWLAKJn_2zjq4X70wDy8Ra7YIIuoM
 
 Name:		minitube
-Version:	3.6.4
+Version:	3.6.5
 Release:	1
 Summary:	A native YouTube client
 Group:		Video/Players
