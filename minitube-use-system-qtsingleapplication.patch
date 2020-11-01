@@ -1,10 +1,11 @@
-diff -uraN minitube-3.6/minitube.pro omv-minitube-3.6/minitube.pro
---- minitube-3.6/minitube.pro	2020-09-08 23:39:11.000000000 +0200
-+++ omv-minitube-3.6/minitube.pro	2020-09-09 22:17:25.766859968 +0200
-@@ -40,7 +40,11 @@
+diff -uraN minitube-3.6.5/minitube.pro omv-minitube-3.6.5/minitube.pro
+--- minitube-3.6.5/minitube.pro	2020-10-26 19:17:28.000000000 +0100
++++ omv-minitube-3.6.5/minitube.pro	2020-11-01 20:33:42.892356391 +0100
+@@ -40,8 +40,11 @@
+ 
  DEFINES += MEDIA_MPV
  include(lib/media/media.pri)
- 
+-
 +isEmpty(USE_SYSTEM_QTSINGLEAPPLICATION){
  include(src/qtsingleapplication/qtsingleapplication.pri)
 +} else {
@@ -12,4 +13,4 @@ diff -uraN minitube-3.6/minitube.pro omv-minitube-3.6/minitube.pro
 +}
  include(src/invidious/invidious.pri)
  include(src/ytjs/ytjs.pri)
- 
+ include(src/yt/yt.pri)
