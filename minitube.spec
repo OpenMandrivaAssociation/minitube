@@ -16,19 +16,17 @@ Source0:	https://github.com/flaviotordini/minitube/releases/download/%{version}/
 #Patch0:		minitube-use-system-qtsingleapplication.patch
 #Patch1:		fix-build-with-mpv035.patch
 
-BuildRequires:	pkgconfig(Qt5Core)
-BuildRequires:	pkgconfig(Qt5Network)
-BuildRequires:	pkgconfig(Qt5Widgets)
-BuildRequires:	pkgconfig(Qt5Sql)
-BuildRequires:	pkgconfig(Qt5Qml)
-BuildRequires:	pkgconfig(Qt5X11Extras)
-BuildRequires:	pkgconfig(phonon4qt5)
-BuildRequires:	qt5-qttools
+BuildRequires:	pkgconfig(Qt6Core)
+BuildRequires:	pkgconfig(Qt6Network)
+BuildRequires:	pkgconfig(Qt6Widgets)
+BuildRequires:	pkgconfig(Qt6Sql)
+BuildRequires:	pkgconfig(Qt6Qml)
+BuildRequires:	pkgconfig(phonon4qt6)
 BuildRequires:	pkgconfig(libvlc)
 BuildRequires:	pkgconfig(mpv)
 BuildRequires:  pkgconfig(tgvoip)
-BuildRequires:	qtsingleapplication-qt5-devel
-BuildRequires:	qt5-linguist-tools
+#BuildRequires:	qtsingleapplication-qt5-devel
+BuildRequires:	cmake(Qt6LinguistTools)
 # minitube no longer supports anything other than the vlc phonon.
 Requires:	phonon4qt5-vlc
 Requires:	vlc-plugin-gnutls
@@ -52,7 +50,7 @@ sed -i -e '/QT_NO_DEBUG_OUTPUT/d' minitube.pro
 rm -r src/qtsingleapplication
 
 %build
-%qmake_qt5 \
+qmake-qt6 \
 	PREFIX=%{_prefix} \
 	USE_SYSTEM_QTSINGLEAPPLICATION=1 \
 	DEFINES+=APP_GOOGLE_API_KEY=%{google_api_key}
