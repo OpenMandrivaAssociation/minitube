@@ -18,6 +18,7 @@ Source0:	https://github.com/flaviotordini/minitube/releases/download/%{version}/
 
 BuildRequires:	pkgconfig(Qt6Core)
 BuildRequires:	pkgconfig(Qt6Network)
+BuildRequires:	pkgconfig(Qt6OpenGLWidgets)
 BuildRequires:	pkgconfig(Qt6Widgets)
 BuildRequires:	pkgconfig(Qt6Sql)
 BuildRequires:	pkgconfig(Qt6Qml)
