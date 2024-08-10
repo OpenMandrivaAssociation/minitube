@@ -6,8 +6,8 @@
 %define    google_api_key AIzaSyDlD0VWLAKJn_2zjq4X70wDy8Ra7YIIuoM
 
 Name:		minitube
-Version:	3.9.3
-Release:	2
+Version:	4.0
+Release:	1
 Summary:	A native YouTube client
 Group:		Video/Players
 License:	GPLv3+
