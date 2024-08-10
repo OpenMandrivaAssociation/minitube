@@ -13,7 +13,7 @@ Group:		Video/Players
 License:	GPLv3+
 URL:		http://flavio.tordini.org/minitube
 Source0:	https://github.com/flaviotordini/minitube/releases/download/%{version}/%{name}-%{version}.tar.bz2
-Patch0:		minitube-use-system-qtsingleapplication.patch
+#Patch0:		minitube-use-system-qtsingleapplication.patch
 Patch1:		fix-build-with-mpv035.patch
 
 BuildRequires:	pkgconfig(Qt5Core)
