@@ -47,7 +47,7 @@ to create a new TV-like experience.
 sed -i -e '/QT_NO_DEBUG_OUTPUT/d' minitube.pro
 
 # remove bundled qtsingleapplication
-rm -r src/qtsingleapplication
+#rm -r src/qtsingleapplication
 
 %build
 qmake-qt6 \
