@@ -1,15 +1,64 @@
-diff -uraN minitube-3.7/minitube.pro omv-minitube-3.7/minitube.pro
---- minitube-3.7/minitube.pro	2020-12-30 10:58:29.000000000 +0100
-+++ omv-minitube-3.7/minitube.pro	2020-12-31 13:59:26.265149770 +0100
-@@ -42,7 +42,11 @@
- DEFINES += MEDIA_MPV
+--- a/minitube.pro	2024-08-10 10:32:24.000000000 +0200
++++ b/minitube.pro	2026-08-02 22:37:25.564722862 +0200
+@@ -46,8 +46,13 @@
  include(lib/media/media.pri)
  
-+isEmpty(USE_SYSTEM_QTSINGLEAPPLICATION){
- include(src/qtsingleapplication/qtsingleapplication.pri)
-+} else {
-+  CONFIG += qtsingleapplication
-+}  
- include(src/yt/yt.pri)
+ !mac {
+-    DEFINES += QAPPLICATION_CLASS=QApplication
+-    include(lib/singleapplication/singleapplication.pri)
++    isEmpty(USE_SYSTEM_QTSINGLEAPPLICATION) {
++        DEFINES += QAPPLICATION_CLASS=QApplication
++        include(lib/singleapplication/singleapplication.pri)
++    } else {
++        CONFIG += qtsingleapplication
++        DEFINES += USE_SYSTEM_QTSINGLEAPPLICATION
++    }
+ }
  
  INCLUDEPATH += $$PWD/src
+--- a/src/main.cpp	2024-08-10 10:32:24.000000000 +0200
++++ b/src/main.cpp	2026-08-02 22:37:25.564785873 +0200
+@@ -21,7 +21,9 @@
+ #include <QtNetwork>
+ #include <QtWidgets>
+ 
+-#ifdef QAPPLICATION_CLASS
++#ifdef USE_SYSTEM_QTSINGLEAPPLICATION
++#include <qtsingleapplication.h>
++#elif defined(QAPPLICATION_CLASS)
+ #include <singleapplication.h>
+ #endif
+ 
+@@ -55,7 +57,18 @@
+     mac::MacMain();
+ #endif
+ 
+-#ifdef QAPPLICATION_CLASS
++#ifdef USE_SYSTEM_QTSINGLEAPPLICATION
++    QtSingleApplication app(argc, argv);
++    QString message;
++    if (app.arguments().size() > 1) {
++        message = app.arguments().at(1);
++        if (message == QLatin1String("--help")) {
++            MainWindow::printHelp();
++            return 0;
++        }
++    }
++    if (app.sendMessage(message)) return 0;
++#elif defined(QAPPLICATION_CLASS)
+     SingleApplication app(argc, argv, true);
+     if (app.isSecondary()) {
+         if (app.arguments().size() > 1) {
+@@ -138,7 +151,11 @@
+     window->setWindowIcon(appIcon);
+ #endif
+ 
+-#ifdef QAPPLICATION_CLASS
++#ifdef USE_SYSTEM_QTSINGLEAPPLICATION
++    window->connect(&app, SIGNAL(messageReceived(const QString &)), window,
++                    SLOT(messageReceived(const QString &)));
++    app.setActivationWindow(window, true);
++#elif defined(QAPPLICATION_CLASS)
+     window->connect(&app, &SingleApplication::instanceStarted, window, [window] {
+         window->show();
+         window->raise();

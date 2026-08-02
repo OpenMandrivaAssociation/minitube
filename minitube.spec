@@ -6,8 +6,8 @@
 %define    google_api_key AIzaSyDlD0VWLAKJn_2zjq4X70wDy8Ra7YIIuoM
 
 Name:		minitube
-Version:	3.9.3
-Release:	2
+Version:	4.0
+Release:	1
 Summary:	A native YouTube client
 Group:		Video/Players
 License:	GPLv3+
@@ -49,8 +49,8 @@ to create a new TV-like experience.
 # more debug msgs
 sed -i -e '/QT_NO_DEBUG_OUTPUT/d' minitube.pro
 
-# remove bundled qtsingleapplication
-rm -r src/qtsingleapplication
+# remove bundled singleapplication (use system qtsingleapplication)
+rm -r lib/singleapplication
 
 %build
 %qmake_qt5 \
